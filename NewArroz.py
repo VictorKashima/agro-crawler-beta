@@ -50,10 +50,10 @@ def arroznew():
 
     if data == ldata[0]:        
         for n in range(lst):
-            ltxt.append(f"{ltitle[n]}\n{lstitle[n]}\n{llink[n]}\n{ldata[n]}")
+            ltxt.append(f"↧Notícias de hoje sobre arroz:↧{ltitle[n]}\n{lstitle[n]}\n{llink[n]}\n{ldata[n]}")
             return ltxt
 
     else:
         lst = 1
-        ltxt.append(f"{ltitle[0]}\n{lstitle[0]}\n{llink[0]}\n{ldata[0]}""")
+        ltxt.append(f"↧Última notícia de arroz:↧\n{ltitle[0]}\n{lstitle[0]}\n{llink[0]}\n{ldata[0]}""")
         return ltxt
