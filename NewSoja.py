@@ -4,12 +4,13 @@ import html5lib
 from DataCerta import data
 
 def sojanew():
-
+    global ltxt, lst
     h = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36 OPR/86.0.4363.32'}
 
     url = get('https://www.agrolink.com.br/noticias/cultura/soja/lista', headers=h)
     page = bs(url.content, 'html5lib')
 
+    ltxt = []
     ldata = []
     ltitle = []
     lstitle = []
@@ -49,13 +50,10 @@ def sojanew():
     
     if data == ldata[0]:        
         for n in range(lst):
-            print(ltitle[n])
-            print(lstitle[n])
-            print(llink[n])
-            print(f'Data:',ldata[n])
+            ltxt.append(f"{ltitle[n]}\n{lstitle[n]}\n{llink[n]}\n{ldata[n]}")
+            return ltxt
+
     else:
-        print(f'Até o presente momento não foi possível encontrar nenhuma notícia sobre Soja.\nPortanto a última notícia encontrada foi:')
-        print(ltitle[0])
-        print(lstitle[0])
-        print(f'Link: {llink[0]}')
-        print(f'Data: {ldata[0]}')
+        lst = 1
+        ltxt.append(f"{ltitle[0]}\n{lstitle[0]}\n{llink[0]}\n{ldata[0]}""")
+        return ltxt

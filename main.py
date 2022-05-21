@@ -1,8 +1,13 @@
-from email import message
+from distutils.log import error
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 from config import bot
 from time import sleep
-import NewArroz
+import NewArroz as NA
+import NewCafe as NC
+import NewSoja as NS
+import PriceArroz as PA
+import PriceCafe as PC
+import PriceSoja as PS
 
 wel = """*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 👨‍🌾BEM VINDO AO AGRO CRAWLER👨‍🌾
@@ -24,31 +29,25 @@ odtxt = """*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ✅DESEJA RECEBER OS DOIS ✅
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - *"""
 
-errortxt = """*⚠POR FAVOR DIGITE NOVAMENTE SEGUINDO O EXEMPLO⚠\n🕰EXEMPLO: 23:00*"""
+errortxt = """*⚠POR FAVOR SELECIONE UMA DAS OPÇÕES⚠*"""
 
-newshr = """⏰*DIGITE O HORÁRIO PARA RECEBER NOTÍCIAS*
-⌚Formato:24 horas
-🕰Exemplo:23:00"""
+newstxt = """🗞 *N O T Í C I A S* 🗞"""
 
-pricehr = """⏰*DIGITE O HORÁRIO PARA RECEBER PREÇOS*
-⌚Formato:24 horas
-🕰Exemplo:23:00"""
+pricehr = """📈 *C O T A Ç Õ E S* 📉"""
 
-allhr = """⏰*DIGITE O HORÁRIO PARA RECEBER NOTÍCIAS E PREÇOS*
-⌚Formato:24 horas
-🕰Exemplo:23:00"""
+allhr = """ 🗞 *N O T Í C I A S* 🗞\n📈 *C O T A Ç Õ E S* 📉"""
 
-an = 0
-cn = 0
-sn = 0
-
-ap = 0
-cp = 0
-sp = 0
-
-atudo = 0
-ctudo = 0
-studo = 0
+def reset():
+    global an, cn, sn, ap, cp, sp, atudo, ctudo, studo
+    an = 0
+    cn = 0
+    sn = 0
+    ap = 0
+    cp = 0
+    sp = 0
+    atudo = 0
+    ctudo = 0
+    studo = 0
 
 arrozsim = "✅ Arroz"
 arroznao = "🟩 Arroz"
@@ -61,10 +60,19 @@ voltar = "↩ Voltar"
 
 @bot.message_handler(commands=['user'])
 def user(message):
+    reset()
     bot.send_message(message.chat.id, text='SEU USER NAME: '+str(message.from_user.username))
+
+
+@bot.message_handler(commands=['info'])
+def user(message):
+    reset()
+    bot.send_message(message.chat.id, text='ESTA É A VERSÃO BETA DO AGRO CRAWLER')
+
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
+    reset()
     kmain = InlineKeyboardMarkup()
     kmain.row_width = 2
     noticias = InlineKeyboardButton("📬 Notícias", callback_data="news")
@@ -73,8 +81,6 @@ def send_welcome(message):
     kmain.add(noticias, precos, osdois)
     bot.reply_to(message, wel, parse_mode="markdown", reply_markup = kmain)
 
-#DECORATOR
-#FUNÇÃO
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_query(call):
@@ -124,6 +130,9 @@ def callback_query(call):
         volt = InlineKeyboardButton(text = voltar, callback_data="vt")
         teclado.add(arroz, cafe, soja, confirm, volt)
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=odtxt, parse_mode="markdown", reply_markup=teclado)
+
+
+
 
 
 #NEWS BUTTONS
@@ -445,6 +454,7 @@ def callback_query(call):
 
 
 
+
 #PRICE BUTTONS
 #---------------------------------------------------------------------------------------------------------------------------------
     elif cd == "pricearroz" and cp == 0 and sp == 0:
@@ -760,6 +770,7 @@ def callback_query(call):
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=prtxt, parse_mode="markdown", reply_markup=teclado)
         bot.answer_callback_query(call.id, "Você não receberá cotação de soja!")
 #---------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
@@ -1085,25 +1096,87 @@ def callback_query(call):
 
 
     elif cd == "confirm1":
-        NewArroz.arroznew(an)
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=newshr, parse_mode="markdown")
-        bot.send_message(call.message.chat.id, text=NewArroz.ltxt[0], parse_mode="markdown")
+        antxt = NA.arroznew()
+        cntxt = NC.cafenew()
+        sntxt = NS.sojanew()
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=newstxt, parse_mode="markdown")
+        if an == 1:
+            for i in range(NA.lst):
+                bot.send_message(call.message.chat.id, text=antxt[i])
+        if cn == 1:
+            for i in range(NC.lst):
+                bot.send_message(call.message.chat.id, text=cntxt[i])
+        if sn == 1:
+            for i in range(NC.lst):
+                bot.send_message(call.message.chat.id, text=sntxt[i])
+        if an == 0 and cn == 0 and sn == 0: 
+            teclado = InlineKeyboardMarkup()
+            teclado.row_width = 1
+            arroz = InlineKeyboardButton(text = arroznao, callback_data="newsarroz")
+            cafe = InlineKeyboardButton(text = cafenao, callback_data="newscafe")
+            soja = InlineKeyboardButton(text = sojanao, callback_data="newssoja")
+            confirm = InlineKeyboardButton(text = continuar, callback_data="confirm1")
+            volt = InlineKeyboardButton(text = voltar, callback_data="vt")
+            teclado.add(arroz, cafe, soja, confirm, volt)
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=errortxt, parse_mode="markdown", reply_markup=teclado)
+        reset()
 
 
     elif cd == "confirm2":
+        aptxt = PA.arrozprice()
+        cptxt = PC.cafeprice()
+        sptxt = PS.sojaprice()
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=pricehr, parse_mode="markdown")
-        print('RECEBER SOMENTE COTAÇÃO')
-        print("Arroz", ap)
-        print("Café", cp)
-        print("Soja", sp)
+        if ap == 1:
+            bot.send_message(call.message.chat.id, text=aptxt)
+        if cp == 1:
+            bot.send_message(call.message.chat.id, text=cptxt)
+        if sp == 1:
+            bot.send_message(call.message.chat.id, text=sptxt)
+        if ap == 0 and cp == 0 and sp == 0:
+            teclado = InlineKeyboardMarkup()
+            teclado.row_width = 1
+            arroz = InlineKeyboardButton(text = arroznao, callback_data="pricearroz")
+            cafe = InlineKeyboardButton(text = cafenao, callback_data="pricecafe")
+            soja = InlineKeyboardButton(text = sojanao, callback_data="pricesoja")
+            confirm = InlineKeyboardButton(text = continuar, callback_data="confirm2")
+            volt = InlineKeyboardButton(text = voltar, callback_data="vt")
+            teclado.add(arroz, cafe, soja, confirm, volt)
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=errortxt, parse_mode="markdown", reply_markup=teclado)
+        reset()
+
+
     elif cd == "confirm3":
+        antxt = NA.arroznew()
+        cntxt = NC.cafenew()
+        sntxt = NS.sojanew()
+        aptxt = PA.arrozprice()
+        cptxt = PC.cafeprice()
+        sptxt = PS.sojaprice()
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=allhr, parse_mode="markdown")
-        print('RECEBER NOTÍCIAS E COTAÇÃO')
-        print("Arroz", atudo)
-        print("Café", ctudo)
-        print("Soja", studo)
-
-
+        if atudo == 1:
+            for i in range(NA.lst):
+                bot.send_message(call.message.chat.id, text=antxt[i])
+            bot.send_message(call.message.chat.id, text=aptxt)
+        if ctudo == 1:
+            for i in range(NC.lst):
+                bot.send_message(call.message.chat.id, text=cntxt[i])
+            bot.send_message(call.message.chat.id, text=cptxt)
+        if studo == 1:
+            for i in range(NC.lst):
+                bot.send_message(call.message.chat.id, text=sntxt[i])
+            bot.send_message(call.message.chat.id, text=sptxt)
+        if an == 0 and cn == 0 and sn == 0:
+            teclado = InlineKeyboardMarkup()
+            teclado.row_width = 1
+            arroz = InlineKeyboardButton(text = arroznao, callback_data="allarroz")
+            cafe = InlineKeyboardButton(text = cafenao, callback_data="allcafe")
+            soja = InlineKeyboardButton(text = sojanao, callback_data="allsoja")
+            confirm = InlineKeyboardButton(text = continuar, callback_data="confirm3")
+            volt = InlineKeyboardButton(text = voltar, callback_data="vt")
+            teclado.add(arroz, cafe, soja, confirm, volt)
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=errortxt, parse_mode="markdown", reply_markup=teclado)
+        reset()
 
 
 

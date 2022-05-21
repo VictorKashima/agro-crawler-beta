@@ -3,14 +3,15 @@ from bs4 import BeautifulSoup as bs
 import html5lib
 from DataCerta import data
 
-def arroznew(arroz, ltxt):
+def arroznew():
+    global ltxt, lst
 
     h = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36 OPR/86.0.4363.23'}
 
     url = get('https://www.agrolink.com.br/noticias/cultura/arroz/lista', headers=h)
     page = bs(url.content, 'html5lib')
 
-    ltxt = ''
+    ltxt = []
     ldata = []
     ltitle = []
     lstitle = []
@@ -49,7 +50,10 @@ def arroznew(arroz, ltxt):
 
     if data == ldata[0]:        
         for n in range(lst):
-            ltxt = (f"{ltitle[n]}\n{lstitle[n]}\n{llink[n]}\n{ldata[n]}")
+            ltxt.append(f"{ltitle[n]}\n{lstitle[n]}\n{llink[n]}\n{ldata[n]}")
+            return ltxt
+
     else:
-        ltxt = (f"{ltitle[0]}\n{lstitle[0]}\n{llink[0]}\n{ldata[0]}")
-        print(ltxt)
+        lst = 1
+        ltxt.append(f"{ltitle[0]}\n{lstitle[0]}\n{llink[0]}\n{ldata[0]}""")
+        return ltxt

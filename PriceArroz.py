@@ -30,16 +30,8 @@ def arrozprice():
     pdol = tudo[4]
 
     if data == pdm:
-        print(f'A cotação da saca de arroz fechou hoje em:')
-        print(f'Reais: R${preais}')
-        print(f'Dólar: ${pdol}')
-        print(f'Variação no dia: {pvard}')
-        print(f'Variação no mês: {pvarm}')
+        a = (f"↧A cotação da saca de arroz fechou hoje em:↧\nReais: R${preais}\nDólar: US${pdol}\nVariação no dia: {pvard}\nVariação no mês: {pvarm}")
+        return a
     else:
-        print('Ainda não foi atualizado as informações sobre a saca de arroz')
-        print('Últimas informações:')
-        print(f'Data: {pdata}')
-        print(f'Reais: R${preais}')
-        print(f'Dólar: ${pdol}')
-        print(f'Variação no dia: {pvard}')
-        print(f'Variação no mês: {pvarm}')
+        a = (f"Ainda não foi atualizado as informações sobre a saca de arroz\n↧Últimas informações:↧\nReais: R${preais}\nDólar: US${pdol}\nVariação no dia: {pvard}\nVariação no mês: {pvarm}")
+        return a
