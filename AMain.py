@@ -7,12 +7,10 @@ from NewSoja import sojanew
 from PriceArroz import arrozprice
 from PriceCafe import cafeprice
 from PriceSoja import sojaprice
-import horagora as h
 
 def linha():
     print('- '*30)
 
-print(h.Nowtime)
 
 print('- - - - - - - - - - C O T A Ç Ã O - - - - - - - - - -')
 arrozprice()

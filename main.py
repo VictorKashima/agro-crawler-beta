@@ -1,6 +1,8 @@
+from email import message
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 from config import bot
 from time import sleep
+import NewArroz
 
 wel = """*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 👨‍🌾BEM VINDO AO AGRO CRAWLER👨‍🌾
@@ -1083,11 +1085,10 @@ def callback_query(call):
 
 
     elif cd == "confirm1":
+        NewArroz.arroznew(an)
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=newshr, parse_mode="markdown")
-        print('RECEBER SOMENTE NOTÍCIAS')
-        print("Arroz", an)
-        print("Café", cn)
-        print("Soja", sn)
+        bot.send_message(call.message.chat.id, text=NewArroz.ltxt[0], parse_mode="markdown")
+
 
     elif cd == "confirm2":
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=pricehr, parse_mode="markdown")
@@ -1105,40 +1106,7 @@ def callback_query(call):
 
 
 
-@bot.message_handler(func=lambda message: True)
-def echo_all(mensagem):
-    global horario, ho, mi
-    m = mensagem
-    tamanho = len(m.text)
-    h = str((m.text)[0:2])
-    m = str((m.text)[3:5])
 
-    if h.isnumeric() and tamanho == 5:
-        hora = int((h)[0:2])
-        if hora <= 23 and hora >= 0:
-            ho = 1
-        else:
-            ho = 0
-
-    if m.isnumeric() and tamanho == 5:
-        mint = int(m)
-        if mint <= 59 and mint >= 0:
-            mi = 1
-        else:
-            mi = 0
-
-    if ho == 1 and mi == 1:
-        hora = ("%02d" %(hora))
-        mint = ("%02d" %(mint))
-        horario = (f"{hora}:{mint}")
-        print(f'HORARIO SALVADO {horario}')
-        hrtxt = (f"""*⏰HORÁRIO SELECIONADO: {horario}*\n🔄PARA MUDAR O HORÁRIO ESCOLHIDO\n⌨DIGITE UM NOVO HORÁRIO""")
-        bot.send_message(mensagem.chat.id, text=hrtxt, parse_mode="markdown")
-
-
-    else:
-        print('HORÁRIO NÃO SALVO')
-        bot.send_message(mensagem.chat.id, text=errortxt, parse_mode="markdown")
 
 
 bot.polling(none_stop=False, interval=1)
