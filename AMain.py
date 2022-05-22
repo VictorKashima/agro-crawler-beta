@@ -1,3 +1,5 @@
+#EXECUTAR TODOS CRAWLERS
+
 from time import sleep
 
 from NewArroz import arroznew

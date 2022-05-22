@@ -1,10 +1,10 @@
 <!-- README BOT TELEGRAM -->
 
-<h1 align="center"> 🚗 CHATBOT TELEGRAM 🚗 </h1>
+<h1 align="center"> 👨‍🌾 CHATBOT TELEGRAM 👨‍🌾 </h1>
 <h3 align="center"> ChatBot do telegram usando python3</h3>
 
 <div align="center">
-    <img src = "https://c.tenor.com/hE0T8D0GpXsAAAAC/joinblink-blink.gif">
+    <img src = "https://imgur.com/gallery/KzUk4QY">
 </div>
 
 <p align="center">

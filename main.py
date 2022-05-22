@@ -1,4 +1,3 @@
-from distutils.log import error
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 from config import bot
 from time import sleep
@@ -1166,7 +1165,7 @@ def callback_query(call):
             for i in range(NC.lst):
                 bot.send_message(call.message.chat.id, text=sntxt[i])
             bot.send_message(call.message.chat.id, text=sptxt)
-        if an == 0 and cn == 0 and sn == 0:
+        if atudo == 0 and ctudo == 0 and studo == 0:
             teclado = InlineKeyboardMarkup()
             teclado.row_width = 1
             arroz = InlineKeyboardButton(text = arroznao, callback_data="allarroz")
