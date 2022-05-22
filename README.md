@@ -4,7 +4,9 @@
 <h3 align="center"> ChatBot do telegram usando python3</h3>
 
 <div align="center">
-    <img src = "https://i.imgur.com/HhhYpT4.jpeg">
+    <img src = "https://i.imgur.com/HhhYpT4.jpeg"
+    height="500"
+    widht="500">
 </div>
 
 <p align="center">
