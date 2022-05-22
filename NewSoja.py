@@ -1,3 +1,5 @@
+#CRAWLER DE NOTÍCIAS DA SOJA
+
 from requests import get
 from bs4 import BeautifulSoup as bs
 import html5lib

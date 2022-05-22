@@ -1,3 +1,5 @@
+#ARQUIVO MAIN PARA RODAR O BOT
+
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 from config import bot
 from time import sleep

@@ -1,4 +1,4 @@
-#EXECUTAR TODOS CRAWLERS
+#EXECUTAR TODOS OS CRAWLERS!
 
 from time import sleep
 
