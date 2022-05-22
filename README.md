@@ -20,6 +20,7 @@
 <h2>Requisitos:</h2>
 <p>
 Linguagens de programação: python3.
+<br>
 Bibliotecas: pyTelegramBotAPI (Telebot), requests e bs4
 </p>
 </div>
@@ -28,8 +29,11 @@ Bibliotecas: pyTelegramBotAPI (Telebot), requests e bs4
 <h2>Como utilizar</h2>
 <p>
 1 - Coloque o token do seu bot no arquivo "config.py"
+<br>
 2 - Execute o arquivo "main.py"
+<br>
 3 - Inicie a conversa com o seu bot com o comando "/start"
+<br>
 4 - Use com moderação
 </p>
 
@@ -38,11 +42,11 @@ Bibliotecas: pyTelegramBotAPI (Telebot), requests e bs4
 Projeto integrador 1° Termo
 </h2>
 <p>
-Integrantes do grupo:
-Igor Galvão.
-Jefferson Vargas.
-Matheus Morandi.
-Victor Kashima.
+Integrantes do grupo:<br>
+Igor Galvão.<br>
+Jefferson Vargas.<br>
+Matheus Morandi.<br>
+Victor Kashima.<br>
 </p>
 
 
