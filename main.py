@@ -1108,7 +1108,7 @@ def callback_query(call):
             for i in range(NC.lst):
                 bot.send_message(call.message.chat.id, text=cntxt[i])
         if sn == 1:
-            for i in range(NC.lst):
+            for i in range(NS.lst):
                 bot.send_message(call.message.chat.id, text=sntxt[i])
         if an == 0 and cn == 0 and sn == 0: 
             teclado = InlineKeyboardMarkup()
@@ -1164,7 +1164,7 @@ def callback_query(call):
                 bot.send_message(call.message.chat.id, text=cntxt[i])
             bot.send_message(call.message.chat.id, text=cptxt)
         if studo == 1:
-            for i in range(NC.lst):
+            for i in range(NS.lst):
                 bot.send_message(call.message.chat.id, text=sntxt[i])
             bot.send_message(call.message.chat.id, text=sptxt)
         if atudo == 0 and ctudo == 0 and studo == 0:

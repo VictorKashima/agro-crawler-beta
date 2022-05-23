@@ -33,7 +33,8 @@ def sojaprice():
 
     if data == pdm:
         a = (f"↧A cotação da saca de soja fechou hoje em:↧\nReais: R${preais}\nDólar: US${pdol}\nVariação no dia: {pvard}\nVariação no mês: {pvarm}")
-        return a
+
     else:
-        a = (f"Ainda não foi atualizado as informações sobre a saca de soja\n↧Últimas informações:↧\nReais: R${preais}\nDólar: US${pdol}\nVariação no dia: {pvard}\nVariação no mês: {pvarm}")
-        return a
+        a = (f"Ainda não foi atualizado as informações sobre a saca de soja\n↧Últimas informações:↧\nData: {pdm}\nReais: R${preais}\nDólar: US${pdol}\nVariação no dia: {pvard}\nVariação no mês: {pvarm}")
+    
+    return a
