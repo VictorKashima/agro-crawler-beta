@@ -10,10 +10,12 @@
 </div>
 
 <p align="center">
+    <a href="https://t.me/AgroCrawlerBot">
     <img src ="https://img.shields.io/badge/BOT-TELEGRAM-red"
     height="30"
     widht="100"
     >
+    Clique aqui ou na imagem para ser redirecionado ao bot.
 </p>
 
 <div>
