@@ -20,7 +20,7 @@ def cafenew():
     lst = 0
     pref = 'https://www.agrolink.com.br'
 
-    for i in range(6, 29, 2):
+    for i in range(4, 28, 2):
         d = pagep.find_all('small')[i]
         a = d.text[:5]
         d = a[:2]

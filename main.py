@@ -59,6 +59,7 @@ sojanao = "🟩 Soja"
 continuar = "🆗 Continuar"
 voltar = "↩ Voltar"
 
+
 @bot.message_handler(commands=['user'])
 def user(message):
     reset()
@@ -1178,6 +1179,20 @@ def callback_query(call):
             teclado.add(arroz, cafe, soja, confirm, volt)
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=errortxt, parse_mode="markdown", reply_markup=teclado)
         reset()
+
+
+@bot.message_handler(func=lambda message:True)
+def echo_all(message):
+    reset()
+    m = message
+    if ((m.text).lower()) == "bom dia":
+        bot.send_message(m.chat.id, text=(f"Bom dia {m.from_user.username} !!"))
+    if ((m.text).lower()) == "boa tarde":
+        bot.send_message(m.chat.id, text=(f"Boa tarde {m.from_user.username} !!"))
+    if ((m.text).lower()) == "boa noite":
+        bot.send_message(m.chat.id, text=(f"Boa noite {m.from_user.username} !!"))
+    if ((m.text).lower()) == "tudo bem?":
+        bot.send_message(m.chat.id, text=(f"Estou ótimo, pronto para enviar notícias e preços para você!"))
 
 
 

@@ -2,4 +2,4 @@
 
 import telebot
 
-bot = telebot.TeleBot(token="COLOQUE O TOKEN DO SEU BOT AQUI (GERADO PELO BOT FATHER)")
+bot = telebot.TeleBot(token="COLOQUE AQUI O TOKEN GERADO PELO BOT FATHER")

@@ -2,34 +2,35 @@
 
 from time import sleep
 
-from NewArroz import arroznew
-from NewCafe import cafenew
-from NewSoja import sojanew
+import NewArroz as NA
+import NewCafe as NC
+import NewSoja as NS
 
-from PriceArroz import arrozprice
-from PriceCafe import cafeprice
-from PriceSoja import sojaprice
+import PriceArroz as PA
+import PriceCafe as PC
+import PriceSoja as PS
 
 def linha():
     print('- '*30)
 
 
 print('- - - - - - - - - - C O T A Ç Ã O - - - - - - - - - -')
-arrozprice()
+print(PA.arrozprice())
 linha()
 sleep(1)
-cafeprice()
+print(PC.cafeprice())
 linha()
 sleep(1)
-sojaprice()
+print(PS.sojaprice())
 linha()
 
 print('- - - - - - - - - - N O T Í C I A S - - - - - - - - - -')
-arroznew()
+for i in range(len(NA.arroznew())):
+    print(NA.arroznew()[i])
 linha()
-sleep(1)
-cafenew()
+for j in range(len(NC.cafenew())):
+    print(NC.cafenew()[j])
 linha()
-sleep(1)
-sojanew()
+for k in range(len(NS.sojanew())):
+    print(NS.sojanew()[k])
 linha()

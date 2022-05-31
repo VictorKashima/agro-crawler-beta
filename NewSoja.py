@@ -20,7 +20,7 @@ def sojanew():
     lst = 0
     pref = 'https://www.agrolink.com.br'
 
-    for i in range(6, 29, 2):
+    for i in range(4, 28, 2):
         d = page.find_all('small')[i]
         a = d.text[:5]
         d = a[:2]
@@ -49,8 +49,7 @@ def sojanew():
         stit = sti.replace('\n','')
         lstitle.append(stit)
 
-    
-    if data == ldata[0]:        
+    if data == (ldata[0]):     
         for n in range(lst):
             ltxt.append(f"↧Notícias de hoje sobre soja:↧\n{ltitle[n]}\n{lstitle[n]}\n{llink[n]}\nData: {ldata[n]}")
 

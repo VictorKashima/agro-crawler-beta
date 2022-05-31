@@ -11,4 +11,4 @@ page = bs(url.content, 'html5lib')
 d = page.find_all('p')[3]
 da = d.text
 dat = (da[-8:]).strip()
-data = dat.replace('-', '/')[:5]
+data = dat.replace('-','/')[:5]
