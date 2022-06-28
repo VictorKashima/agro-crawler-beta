@@ -2,4 +2,4 @@
 
 import telebot
 
-bot = telebot.TeleBot(token="5223291351:AAFLeh7UKWsTHIzmW9w8Y4tQc-nO1WFJuHY")
+bot = telebot.TeleBot(token="COLOQUE AQUI SEU TOKEN")
