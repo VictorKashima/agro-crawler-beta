@@ -1,5 +1,9 @@
-telebot
-pytelegrambotapi
-bs4
-requests
-html5lib
+beautifulsoup4==4.10.0
+html5lib==1.1
+pyTelegramBotAPI==4.5.0
+python-telegram-bot==13.11
+requests==2.22.0
+requests-unixsocket==0.2.0
+telebot==0.0.4
+telepot==12.7
+urllib3==1.25.8
