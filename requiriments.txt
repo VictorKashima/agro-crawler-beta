@@ -1,0 +1,5 @@
+telebot
+pytelegrambotapi
+bs4
+requests
+html5lib
