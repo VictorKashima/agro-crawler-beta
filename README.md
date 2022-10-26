@@ -50,7 +50,7 @@ Integrantes do grupo:<br>
 Igor Galvão.<br>
 Jefferson Vargas.<br>
 Matheus Morandi.<br>
-Victor Kashima.<br>
+Victor Kashima (Líder).<br>
 </p>
 
 
